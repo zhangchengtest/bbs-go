@@ -128,6 +128,7 @@ export default {
     // 发帖标签
     const config = store.state.config.config || {}
     const nodeId = query.nodeId || config.defaultNodeId
+    console.log(query.nodeId)
     let currentNode = null
     if (nodeId) {
       try {

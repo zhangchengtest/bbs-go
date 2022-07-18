@@ -2,6 +2,7 @@ package api
 
 import (
 	"bbs-go/pkg/bbsurls"
+	"fmt"
 
 	"github.com/dchest/captcha"
 	"github.com/kataras/iris/v12"
@@ -15,6 +16,7 @@ type CaptchaController struct {
 }
 
 func (c *CaptchaController) GetRequest() *web.JsonResult {
+	fmt.Println("fuck here")
 	captchaId := c.Ctx.FormValue("captchaId")
 	if strs.IsNotBlank(captchaId) { // reload
 		if !captcha.Reload(captchaId) {
@@ -25,6 +27,7 @@ func (c *CaptchaController) GetRequest() *web.JsonResult {
 		captchaId = captcha.NewLen(4)
 	}
 	captchaUrl := bbsurls.AbsUrl("/api/captcha/show?captchaId=" + captchaId + "&r=" + strs.UUID())
+	fmt.Println(captchaUrl)
 	return web.NewEmptyRspBuilder().
 		Put("captchaId", captchaId).
 		Put("captchaUrl", captchaUrl).
@@ -32,6 +35,7 @@ func (c *CaptchaController) GetRequest() *web.JsonResult {
 }
 
 func (c *CaptchaController) GetShow() {
+	fmt.Println("fuck2 here")
 	captchaId := c.Ctx.URLParam("captchaId")
 
 	if captchaId == "" {

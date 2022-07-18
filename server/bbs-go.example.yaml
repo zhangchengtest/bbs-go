@@ -7,7 +7,7 @@ StaticPath: /data/www  # 根路径下的静态文件目录，可配置绝对路�
 
 # 数据库连接
 DB:
-  Url: username:password@tcp(localhost:3306)/bbsgo_db?charset=utf8mb4&parseTime=True&loc=Local
+  Url: username:password@tcp(172.31.21.3:3306)/bbsgo_db?charset=utf8mb4&parseTime=True&loc=Local
   MaxIdleConns: 50
   MaxOpenConns: 200
 

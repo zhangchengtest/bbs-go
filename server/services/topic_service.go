@@ -144,6 +144,8 @@ func (s *topicService) Publish(userId int64, form model.CreateTopicForm) (*model
 
 	if form.NodeId <= 0 {
 		form.NodeId = SysConfigService.GetConfig().DefaultNodeId
+		logrus.Info("你好")
+		logrus.Info(SysConfigService.GetConfig().DefaultNodeId)
 		if form.NodeId <= 0 {
 			return nil, web.NewErrorMsg("请选择节点")
 		}
