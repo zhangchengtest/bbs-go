@@ -128,10 +128,13 @@ export default {
     // 发帖标签
     const config = store.state.config.config || {}
     const nodeId = query.nodeId || config.defaultNodeId
+    console.log('hi')
     console.log(query.nodeId)
+    console.log(config.defaultNodeId)
     let currentNode = null
     if (nodeId) {
       try {
+        console.log('send nodeId ' + nodeId)
         currentNode = await $axios.get('/api/topic/node?nodeId=' + nodeId)
       } catch (e) {
         console.error(e)

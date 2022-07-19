@@ -5,6 +5,8 @@ import (
 	"bbs-go/pkg/common"
 	"bbs-go/pkg/markdown"
 	"bbs-go/spam"
+	"fmt"
+	"github.com/sirupsen/logrus"
 	"math/rand"
 	"strconv"
 	"strings"
@@ -33,6 +35,8 @@ func (c *TopicController) GetNodes() *web.JsonResult {
 
 // 节点信息
 func (c *TopicController) GetNode() *web.JsonResult {
+	logrus.Info("hi ")
+	fmt.Println("hi 2")
 	nodeId := params.FormValueInt64Default(c.Ctx, "nodeId", 0)
 	node := services.TopicNodeService.Get(nodeId)
 	return web.JsonData(render.BuildNode(node))
